@@ -20,6 +20,7 @@ export type InitialData = {
   brandedWallpaperData: undefined | NewTab.BrandedWallpaper
   togetherSupported: boolean
   geminiSupported: boolean
+  binanceSupported: boolean
   bitcoinDotComSupported: boolean
 }
 
@@ -52,6 +53,7 @@ export async function getInitialData (): Promise<InitialData> {
       brandedWallpaperData,
       togetherSupported,
       geminiSupported,
+      binanceSupported,
       bitcoinDotComSupported
     ] = await Promise.all([
       preferencesAPI.getPreferences(),
@@ -76,6 +78,11 @@ export async function getInitialData (): Promise<InitialData> {
         })
       }),
       new Promise((resolve) => {
+        chrome.binance.isSupportedRegion((supported: boolean) => {
+          resolve(supported)
+        })
+      }),
+      new Promise((resolve) => {
         chrome.moonpay.isBitcoinDotComSupported((supported: boolean) => {
           resolve(supported)
         })
@@ -92,33 +99,12 @@ export async function getInitialData (): Promise<InitialData> {
       brandedWallpaperData,
       togetherSupported,
       geminiSupported,
+      binanceSupported,
       bitcoinDotComSupported
     } as InitialData
   } catch (e) {
     console.error(e)
     throw Error('Error getting initial data')
-  }
-}
-
-export async function getBinanceBlackList (): Promise<any> {
-  try {
-    const [
-      onlyAnonWallet,
-      isSupportedRegion
-    ] = await Promise.all([
-      new Promise(resolve => chrome.braveRewards.onlyAnonWallet((onlyAnonWallet: boolean) => {
-        resolve(!!onlyAnonWallet)
-      })),
-      new Promise(resolve => chrome.binance.isSupportedRegion((supported: boolean) => {
-        resolve(!!supported)
-      }))
-    ])
-    return {
-      isSupportedRegion,
-      onlyAnonWallet
-    }
-  } catch (err) {
-    throw Error(err)
   }
 }
 

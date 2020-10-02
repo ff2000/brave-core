@@ -134,36 +134,6 @@ class NewTabPage extends React.Component<Props, State> {
         !GetShouldShowBrandedWallpaperNotification(this.props)) {
       this.stopWaitingForBrandedWallpaperNotificationAutoDismiss()
     }
-
-    // Handles updates from brave://settings/newTab
-    const oldShowRewards = prevProps.newTabData.showRewards
-    const oldShowBinance = prevProps.newTabData.showBinance
-    const oldShowTogether = prevProps.newTabData.showTogether
-    const oldShowGemini = prevProps.newTabData.showGemini
-    const oldShowBitcoinDotCom = prevProps.newTabData.showBitcoinDotCom
-    const { showRewards, showBinance, showTogether, showGemini, showBitcoinDotCom } = this.props.newTabData
-
-    if (!oldShowRewards && showRewards) {
-      this.props.actions.setForegroundStackWidget('rewards')
-    } else if (!oldShowBinance && showBinance) {
-      this.props.actions.setForegroundStackWidget('binance')
-    } else if (!oldShowTogether && showTogether) {
-      this.props.actions.setForegroundStackWidget('together')
-    } else if (oldShowRewards && !showRewards) {
-      this.props.actions.removeStackWidget('rewards')
-    } else if (oldShowBinance && !showBinance) {
-      this.props.actions.removeStackWidget('binance')
-    } else if (oldShowTogether && !showTogether) {
-      this.props.actions.removeStackWidget('together')
-    } else if (oldShowGemini && !showGemini) {
-      this.props.actions.removeStackWidget('gemini')
-    } else if (!oldShowGemini && showGemini) {
-      this.props.actions.setForegroundStackWidget('gemini')
-    } else if (oldShowBitcoinDotCom && !showBitcoinDotCom) {
-      this.props.actions.removeStackWidget('bitcoinDotCom')
-    } else if (!oldShowBitcoinDotCom && showBitcoinDotCom) {
-      this.props.actions.setForegroundStackWidget('bitcoinDotCom')
-    }
   }
 
   trackCachedImage () {
@@ -244,12 +214,6 @@ class NewTabPage extends React.Component<Props, State> {
   toggleShowRewards = () => {
     const { showRewards } = this.props.newTabData
 
-    if (showRewards) {
-      this.removeStackWidget('rewards')
-    } else {
-      this.setForegroundStackWidget('rewards')
-    }
-
     if (!showRewards) {
       this.props.saveShowAddCard(true)
     }
@@ -260,12 +224,6 @@ class NewTabPage extends React.Component<Props, State> {
   toggleShowTogether = () => {
     const { showTogether } = this.props.newTabData
 
-    if (showTogether) {
-      this.removeStackWidget('together')
-    } else {
-      this.setForegroundStackWidget('together')
-    }
-
     if (!showTogether) {
       this.props.saveShowAddCard(true)
     }
@@ -275,12 +233,6 @@ class NewTabPage extends React.Component<Props, State> {
 
   toggleShowBinance = () => {
     const { showBinance } = this.props.newTabData
-
-    if (showBinance) {
-      this.removeStackWidget('binance')
-    } else {
-      this.setForegroundStackWidget('binance')
-    }
 
     if (!showBinance) {
       this.props.saveShowAddCard(true)
@@ -302,12 +254,6 @@ class NewTabPage extends React.Component<Props, State> {
 
   toggleShowGemini = () => {
     const { showGemini } = this.props.newTabData
-
-    if (showGemini) {
-      this.removeStackWidget('gemini')
-    } else {
-      this.setForegroundStackWidget('gemini')
-    }
 
     if (!showGemini) {
       this.props.saveShowAddCard(true)
@@ -472,10 +418,6 @@ class NewTabPage extends React.Component<Props, State> {
 
   setForegroundStackWidget = (widget: NewTab.StackWidget) => {
     this.props.actions.setForegroundStackWidget(widget)
-  }
-
-  removeStackWidget = (widget: NewTab.StackWidget) => {
-    this.props.actions.removeStackWidget(widget)
   }
 
   setInitialAmount = (amount: string) => {
@@ -660,7 +602,6 @@ class NewTabPage extends React.Component<Props, State> {
   getCryptoContent () {
     const {
       widgetStackOrder,
-      binanceState,
       togetherSupported,
       showRewards,
       showBinance,
@@ -668,6 +609,7 @@ class NewTabPage extends React.Component<Props, State> {
       showGemini,
       showBitcoinDotCom,
       geminiSupported,
+      binanceSupported,
       bitcoinDotComSupported
     } = this.props.newTabData
     const lookup = {
@@ -676,7 +618,7 @@ class NewTabPage extends React.Component<Props, State> {
         render: this.renderRewardsWidget.bind(this)
       },
       'binance': {
-        display: binanceState.binanceSupported && showBinance,
+        display: binanceSupported && showBinance,
         render: this.renderBinanceWidget.bind(this)
       },
       'together': {
@@ -711,7 +653,6 @@ class NewTabPage extends React.Component<Props, State> {
 
   allWidgetsHidden = () => {
     const {
-      binanceState,
       togetherSupported,
       showRewards,
       showBinance,
@@ -719,12 +660,13 @@ class NewTabPage extends React.Component<Props, State> {
       geminiSupported,
       showGemini,
       showBitcoinDotCom,
+      binanceSupported,
       bitcoinDotComSupported
     } = this.props.newTabData
     return [
       showRewards,
       togetherSupported && showTogether,
-      binanceState.binanceSupported && showBinance,
+      binanceSupported && showBinance,
       geminiSupported && showGemini,
       showBitcoinDotCom && bitcoinDotComSupported
     ].every((widget: boolean) => !widget)
@@ -827,10 +769,10 @@ class NewTabPage extends React.Component<Props, State> {
 
   renderBinanceWidget (showContent: boolean, position: number) {
     const { newTabData } = this.props
-    const { binanceState, showBinance, textDirection } = newTabData
+    const { binanceState, showBinance, textDirection, binanceSupported } = newTabData
     const menuActions = { onLearnMore: this.learnMoreBinance }
 
-    if (!showBinance || !binanceState.binanceSupported) {
+    if (!showBinance || !binanceSupported) {
       return null
     }
 
@@ -948,7 +890,6 @@ class NewTabPage extends React.Component<Props, State> {
   render () {
     const { newTabData, gridSitesData, actions } = this.props
     const { showSettingsMenu, focusMoreCards } = this.state
-    const { binanceState } = newTabData
 
     if (!newTabData) {
       return null
@@ -1072,7 +1013,7 @@ class NewTabPage extends React.Component<Props, State> {
           allowSponsoredWallpaperUI={newTabData.featureFlagBraveNTPSponsoredImagesWallpaper}
           toggleShowRewards={this.toggleShowRewards}
           toggleShowBinance={this.toggleShowBinance}
-          binanceSupported={binanceState.binanceSupported}
+          binanceSupported={newTabData.binanceSupported}
           togetherSupported={newTabData.togetherSupported}
           toggleShowTogether={this.toggleShowTogether}
           showTogether={newTabData.showTogether}
