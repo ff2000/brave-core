@@ -1066,6 +1066,7 @@ class NewTabPage extends React.Component<Props, State> {
       <CryptoDotCom
         {...cryptoDotComState}
         isCrypto={true}
+        paddingType={'none'}
         isCryptoTab={!showContent}
         menuPosition={'left'}
         widgetTitle={'Crypto.com'}
