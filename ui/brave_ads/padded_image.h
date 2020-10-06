@@ -15,7 +15,7 @@ namespace brave_ads {
 
 class PaddedImage : public views::ImageView {
  public:
-  explicit PaddedImage();
+  PaddedImage();
   ~PaddedImage() override = default;
 
  private:

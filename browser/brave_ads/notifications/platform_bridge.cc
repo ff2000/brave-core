@@ -50,8 +50,8 @@ class PassThroughDelegate
         std::make_unique<brave_ads::AdsNotificationHandler>(
             static_cast<content::BrowserContext*>(profile_));
     handler->SetAdsService(
-      static_cast<brave_ads::AdsServiceImpl*>(
-        brave_ads::AdsServiceFactory::GetForProfile(profile_)));
+        static_cast<brave_ads::AdsServiceImpl*>(
+            brave_ads::AdsServiceFactory::GetForProfile(profile_)));
     handler->OnClose(
         profile_,
         notification_.origin_url(),
@@ -67,7 +67,7 @@ class PassThroughDelegate
             static_cast<content::BrowserContext*>(profile_));
     handler->SetAdsService(
         static_cast<brave_ads::AdsServiceImpl*>(
-           brave_ads::AdsServiceFactory::GetForProfile(profile_)));
+            brave_ads::AdsServiceFactory::GetForProfile(profile_)));
     handler->OnClick(
         profile_,
         notification_.origin_url(),

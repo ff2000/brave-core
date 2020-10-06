@@ -57,7 +57,8 @@ void MessagePopupView::Show(const Notification& notification) {
 // static
 void MessagePopupView::Clicked(const std::string& notification_id) {
   MessagePopupView* message_popup_view = g_notifications_[notification_id];
-  NotificationDelegate* notification_delegate = message_popup_view->notification_.delegate();
+  NotificationDelegate* notification_delegate =
+      message_popup_view->notification_.delegate();
   if (notification_delegate) {
     notification_delegate->Click(base::nullopt, base::nullopt);
   }
@@ -70,7 +71,8 @@ void MessagePopupView::ClosePopup(const bool by_user) {
   for (auto iter = g_notifications_.begin();
       iter != g_notifications_.end(); ++iter) {
     MessagePopupView* message_popup_view = g_notifications_[iter->first];
-    NotificationDelegate* notification_delegate = message_popup_view->notification_.delegate();
+    NotificationDelegate* notification_delegate =
+        message_popup_view->notification_.delegate();
     if (notification_delegate) {
       notification_delegate->Close(by_user);
     }

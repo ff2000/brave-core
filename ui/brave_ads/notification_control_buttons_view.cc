@@ -68,7 +68,10 @@ void NotificationControlButtonsView::ShowCloseButton(bool show) {
     close_button_->set_owned_by_client();
     close_button_->SetImage(
         views::Button::STATE_NORMAL,
-        gfx::CreateVectorIcon(kBraveAdsCloseButtonIcon, 18, kBraveAdsCloseButtonIconColor));
+        gfx::CreateVectorIcon(
+            kBraveAdsCloseButtonIcon,
+            18,
+            kBraveAdsCloseButtonIconColor));
 
     // Add the button at the last.
     AddChildView(close_button_.get());
