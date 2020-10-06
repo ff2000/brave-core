@@ -50,7 +50,8 @@ static void JNI_BraveAdsNativeHelper_AdNotificationClicked(
 static void JNI_BraveAdsNativeHelper_AdNotificationDismissed(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& j_profile_android,
-    const base::android::JavaParamRef<jstring>& j_notification_id);
+    const base::android::JavaParamRef<jstring>& j_notification_id,
+    jboolean j_by_user);
 
 }  // namespace brave_ads
 

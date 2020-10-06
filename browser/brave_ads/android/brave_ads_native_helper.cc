@@ -119,7 +119,8 @@ void JNI_BraveAdsNativeHelper_AdNotificationClicked(
 void JNI_BraveAdsNativeHelper_AdNotificationDismissed(
     JNIEnv* env,
     const base::android::JavaParamRef<jobject>& j_profile_android,
-    const base::android::JavaParamRef<jstring>& j_notification_id) {
+    const base::android::JavaParamRef<jstring>& j_notification_id,
+    jboolean j_by_user) {
   Profile* profile = ProfileAndroid::FromProfileAndroid(j_profile_android);
   brave_ads::AdsServiceImpl* ads_service =
         brave_ads::AdsServiceFactory::GetImplForProfile(profile);
@@ -136,7 +137,7 @@ void JNI_BraveAdsNativeHelper_AdNotificationDismissed(
   handler->OnClose(profile,
       GURL(""),
       notification_id,
-      true,
+      j_by_user,
       base::OnceClosure());
 }
 

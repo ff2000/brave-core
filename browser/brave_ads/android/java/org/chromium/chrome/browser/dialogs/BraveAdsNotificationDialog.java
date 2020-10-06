@@ -75,7 +75,7 @@ public class BraveAdsNotificationDialog {
             @Override
             public void onClick(View view) {
                 mAdsDialog.dismiss();
-                BraveAdsNativeHelper.nativeAdNotificationDismissed(Profile.getLastUsedRegularProfile(), mNotificationId);
+                BraveAdsNativeHelper.nativeAdNotificationDismissed(Profile.getLastUsedRegularProfile(), mNotificationId, true);
             }
         });
 
@@ -115,6 +115,7 @@ public class BraveAdsNotificationDialog {
         try {
             if (mNotificationId != null && mNotificationId.equals(notificationId) && mAdsDialog != null) {
                 mAdsDialog.dismiss();
+                BraveAdsNativeHelper.nativeAdNotificationDismissed(Profile.getLastUsedRegularProfile(), mNotificationId, false);
             }
         } catch (IllegalArgumentException e) {
             mAdsDialog = null;
