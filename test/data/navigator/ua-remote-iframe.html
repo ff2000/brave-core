@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<!-- navigator.userAgent iframe test -->
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+      window.onmessage = function(event) {
+        document.title = "pass";
+        if (navigator.userAgent == event.data) {
+
+        }
+      }
+      var iframe = document.createElement("iframe");
+      iframe.src = document.location.href.replace("b.com", "z.com").replace("remote-", "");
+      document.body.appendChild(iframe);
+    </script>
+  </body>
+</html>
