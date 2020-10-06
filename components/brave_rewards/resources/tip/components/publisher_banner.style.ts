@@ -17,9 +17,7 @@ export const root = styled.div`
   justify-content: center;
   padding: 64px 12px 10px;
   height: 100%;
-
   color: #fff;
-
   background-color: #212529;
   background-size: cover;
   background-position: center;
@@ -61,7 +59,6 @@ export const verifiedIcon = styled.div`
   position: absolute;
   top: 3px;
   left: -12px;
-
   color: #AEB1C2;
 
   &.verified {
@@ -78,15 +75,8 @@ export const logoMask = styled.div`
   width: 82px;
   text-align: center;
   overflow: hidden;
-
-  background: #fff;
   border-radius: 50%;
-  text-align: center;
-  color: var(--brave-color-brandBrave);
-  text-transform: uppercase;
-  font-size: 52px;
-  font-weight: 600;
-  line-height: 82px;
+  border: solid 2px rgba(255, 255, 255, .5);
 
   > img {
     object-fit: cover;
@@ -94,9 +84,19 @@ export const logoMask = styled.div`
   }
 `
 
+export const logoLetter = styled.div`
+  background: #fff;
+  height: 100%;
+  color: var(--brave-color-brandBrave);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 82px;
+`
+
 export const name = styled.div`
   flex: 1 1 auto;
-
   font-size: 22px;
   line-height: 33px;
   font-weight: 600;
@@ -122,7 +122,6 @@ export const socialLinks = styled.div`
     height: 25px;
     padding: 4px;
     margin: 0 5px;
-
     border-radius: 50%;
     background: #fff;
   }
@@ -134,7 +133,6 @@ export const unverifiedNotice = styled.div`
   margin-bottom: -12px;
   display: flex;
   align-items: center;
-
   font-size: 12px;
   background: #fff;
   color: #000;
@@ -160,7 +158,6 @@ export const unverifiedNoticeText = styled.div`
 
 export const title = styled.div`
   margin-top: 28px;
-
   font-size: 18px;
   line-height: 26px;
 `

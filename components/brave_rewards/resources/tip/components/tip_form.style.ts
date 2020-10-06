@@ -15,7 +15,6 @@ export const loading = styled.div``
 export const header = styled.div`
   text-align: center;
   padding-top: 27px;
-
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -46,7 +45,6 @@ export const monthlyIndicator = styled.div`
   text-align: center;
   padding-bottom: 4px;
   margin-top: -20px;
-
   font-size: 12px;
   line-height: 16px;
   color: #979797;

@@ -7,7 +7,6 @@ import styled from 'styled-components'
 export const root = styled.div`
   display: flex;
   flex-flow: row wrap;
-
   font-family: var(--brave-font-heading);
   font-size: 14px;
   line-height: 22px;
@@ -32,7 +31,6 @@ export const form = styled.div`
   position: relative;
   flex: 1 0 364px;
   min-height: 454px;
-
   background: #fff;
 `
 
@@ -62,6 +60,5 @@ export const error = styled.div`
 
 export const errorDetails = styled.div`
   margin-top: 10px;
-
   font-size: 12px;
 `

@@ -30,7 +30,6 @@ export const header = styled.div`
   padding-top: 63px;
   padding-bottom: 9px;
   text-align: center;
-
   border-bottom: 1px solid rgba(174, 177, 194, 0.5);
   font-weight: 600;
   font-size: 22px;
@@ -40,7 +39,6 @@ export const header = styled.div`
 export const message = styled.div`
   padding-top: 46px;
   text-align: center;
-
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -50,7 +48,6 @@ export const message = styled.div`
 export const table = styled.div`
   margin-top: 17px;
   text-align: left;
-
   font-size: 14px;
   line-height: 21px;
 
@@ -95,7 +92,6 @@ export const cancelMain = styled.div`
 
 export const cancelHeader = styled.div`
   margin-top: 152px;
-
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -104,7 +100,6 @@ export const cancelHeader = styled.div`
 
 export const cancelText = styled.div`
   margin: 24px 53px 0;
-
   color: #212529;
 `
 

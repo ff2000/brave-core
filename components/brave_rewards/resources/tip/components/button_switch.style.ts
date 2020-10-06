@@ -15,7 +15,6 @@ export const option = styled.div`
   button {
     width: 100%;
     padding: var(--button-switch-padding, 6px 0);
-
     font-size: 12px;
     line-height: 21px;
     border-radius: 30px;
@@ -23,10 +22,12 @@ export const option = styled.div`
     background: #fff;
     color: var(--brave-color-brandBatInteracting);
     cursor: pointer;
+    outline: 0;
   }
 
-  button:active {
+  button:active, button:focus {
     background: var(--brave-color-brandBatActive);
+    color: var(--brave-color-brandBatInteracting);
   }
 
   &.selected button {
@@ -38,7 +39,6 @@ export const option = styled.div`
 
 export const caption = styled.div`
   margin-top: 5px;
-
   text-align: center;
   font-size: 12px;
   line-height: 18px;

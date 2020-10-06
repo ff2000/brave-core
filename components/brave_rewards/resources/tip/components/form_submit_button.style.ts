@@ -8,7 +8,6 @@ export const root = styled.div`
   button {
     width: 100%;
     padding: 19px 0;
-
     cursor: pointer;
     border: none;
     background: var(--brave-color-brandBatInteracting);
@@ -16,6 +15,7 @@ export const root = styled.div`
     line-height: 21px;
     font-weight: 600;
     color: #fff;
+    outline: 0;
   }
 
   button:active {

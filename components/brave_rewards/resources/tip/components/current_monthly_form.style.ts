@@ -9,13 +9,11 @@ export const root = styled.div`
   padding-top: 45px;
   display: flex;
   flex-direction: column;
-
   color: #212529;
 `
 
 export const header = styled.div`
   text-align: center;
-
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -50,7 +48,6 @@ export const cancel = styled.span`
 
   button {
     padding: 10px 22px;
-
     border: none;
     background: none;
     color: #868E96;
@@ -64,7 +61,6 @@ export const cancel = styled.span`
 export const changeAmount = styled.span`
   button {
     padding: 9px 21px;
-
     background: none;
     color: var(--brave-color-brandBatInteracting);
     cursor: pointer;

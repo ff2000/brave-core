@@ -16,7 +16,6 @@ export const bar = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-
   background: #fff;
   border-radius: 21px;
   transition: all .3s ease;
@@ -26,7 +25,6 @@ export const rail = styled.div`
   display: flex;
   align-items: center;
   height: 37px;
-
   background: #DFDFE8;
   border-radius: 21px;
 `
@@ -38,18 +36,17 @@ export const option = styled.div`
   button {
     width: 100%;
     text-align: center;
-
     font-size: 12px;
     line-height: 30px;
     color: #686978;
     background: transparent;
     cursor: pointer;
     border: none;
+    outline: 0;
   }
 
   &.selected button {
     position: relative;
-
     color: var(
       --slider-switch-selected-color,
       var(--brave-color-brandBatInteracting)
