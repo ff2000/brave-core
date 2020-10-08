@@ -7,9 +7,8 @@
   <body>
     <script>
       window.onmessage = function(event) {
-        document.title = "pass";
         if (navigator.userAgent == event.data) {
-
+          document.title = "pass";
         }
       }
       var iframe = document.createElement("iframe");
